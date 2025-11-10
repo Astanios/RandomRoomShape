@@ -1,16 +1,20 @@
-# React + Vite
+# Random Room Shape
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This repo was generated using `create-vite`.
 
-Currently, two official plugins are available:
+Although it doesn't use any external libraries, it does use the `canvas` element to draw the shapes.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Run it by using yarn:
 
-## React Compiler
+```bash
+yarn
+yarn dev
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+You should see:
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- A random room (triangle/simple/t-shape) drawn.
+- Red “length” and blue “width” lines, each wall-to-wall and perpendicular to each other, with endpoints marked.
+- The button cycles the base wall, changing which segment is parallel (length) and which is perpendicular (width).
+- A button that changes the shape to a random one different than the current.
+- Labels at the top indicate the chosen shape and the current baseline wall indices.

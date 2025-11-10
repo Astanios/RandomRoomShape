@@ -44,7 +44,6 @@ async function loadRandomShape() {
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  // ----- 1. Fit shape into canvas --------------------------------
   const pad = 40;
   const xs = vertices.map((v) => v.x),
     ys = vertices.map((v) => v.y);
@@ -69,7 +68,6 @@ function draw() {
     };
   };
 
-  // Draw room outline
   ctx.beginPath();
   {
     const t0 = transform(vertices[0]);
@@ -84,16 +82,14 @@ function draw() {
   ctx.lineWidth = 2;
   ctx.stroke();
 
-  // ----- 3. Compute length/width lines --------------------------
   const baseEdge = edges[edgeIndex];
   const dirRaw = vector(baseEdge.p0, baseEdge.p1);
-  const dir = normalize(dirRaw); // direction of length line
-  const perpDir = normalize(perp(dir)); // direction of width line
+  const dir = normalize(dirRaw);
+  const perpDir = normalize(perp(dir));
 
   const lenSeg = getLineSegmentEndpoints(cent, dir, edges);
   const widSeg = getLineSegmentEndpoints(cent, perpDir, edges);
 
-  // ----- 4. Draw length line ------------------------------------
   if (lenSeg) {
     ctx.strokeStyle = "red";
     ctx.lineWidth = 4;
@@ -106,7 +102,6 @@ function draw() {
     }
     ctx.stroke();
 
-    // endpoints
     ctx.fillStyle = "#c00";
     [lenSeg.p1, lenSeg.p2].forEach((p) => {
       const tp = transform(p);
@@ -116,7 +111,6 @@ function draw() {
     });
   }
 
-  // ----- 5. Draw width line ------------------------------------
   if (widSeg) {
     ctx.strokeStyle = "blue";
     ctx.lineWidth = 4;
@@ -151,7 +145,7 @@ function draw() {
 }
 
 btnOrientation.addEventListener("click", () => {
-  edgeIndex = (edgeIndex + 1) % edges.length; // cycle through edges
+  edgeIndex = (edgeIndex + 1) % edges.length;
   draw();
 });
 
